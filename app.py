@@ -201,10 +201,13 @@ def create_pdf(text, row, rating, duration, language="English"):
     pdf.cell(0, 12, f"Your Rating: {rating}/5 Stars", ln=True, align='C')
     
     buffer = BytesIO()
-    pdf_output = pdf.output(dest='S')
-    buffer.write(pdf_output)
+    pdf_output = pdf.output()
+    if isinstance(pdf_output, str):
+         buffer.write(pdf_output.encode('latin-1'))
+    else:
+         buffer.write(bytes(pdf_output))
     buffer.seek(0)
-    return buffer
+    return buffer 
 
 def generate_cinematic_gif(spot, language, duration):
     import numpy as np
