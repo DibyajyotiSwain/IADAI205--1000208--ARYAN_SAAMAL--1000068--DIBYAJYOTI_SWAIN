@@ -533,7 +533,7 @@ with st.sidebar:
 # MAIN APP INTERFACE (SESSION STATE FIXED)
 # =============================
 st.markdown('<h1 class="main-title">✈️ TravelAI Premium</h1>', unsafe_allow_html=True)
-st.markdown('<p class="sub-title">AI-Powered Cultural Tourism | <strong>Hodophiler</strong> ready ➡️</p>', unsafe_allow_html=True)
+st.markdown('<p class="sub-title">AI-Powered Cultural Tourism | <strong>With Hodophiler(Your true companion for the perfect trip)</strong></p>', unsafe_allow_html=True)
 
 if not df.empty:
     tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs([
@@ -941,6 +941,6 @@ st.markdown("---")
 st.markdown("""
 <div style='text-align: center; color: #64748b; padding: 2rem;'>
     <h3>🎓 CAPSTONE PROJECT </h3>
-    <p><strong> | Hodophiler Sidebar ✅ | Feedback & Analytics ✅</strong></p>
+    <p><strong> | ❤️A Journey to the Perfect Trip by Aryan & Dibyajyoti❤️ </strong></p>
 </div>
 """, unsafe_allow_html=True)
