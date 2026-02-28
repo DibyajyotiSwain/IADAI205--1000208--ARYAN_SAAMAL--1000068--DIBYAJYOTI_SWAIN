@@ -178,37 +178,46 @@ def generate_consolidated_itinerary(row, profile, duration, language, interests,
 def create_pdf(text, row, rating, duration, language="English"):
     pdf = FPDF()
     pdf.add_page()
-    
+
     pdf.set_font("Arial", "B", 22)
     pdf.cell(0, 15, f"TravelAI Elite Guide ({language})", ln=True, align='C')
     pdf.set_font("Arial", "B", 16)
     pdf.cell(0, 12, f"{row['city']}, {row['country']}", ln=True, align='C')
     pdf.ln(8)
-    
+
     pdf.set_font("Arial", "", 12)
-    details = [f"Language: {language}", f"From: {row['country']}", f"Climate: {row['climate_label']}",
-               f"Daily Cost: ${row['avg_cost_usd_day']}", f"Rating: {row['avg_rating']}", f"Duration: {duration}"]
-    for detail in details: 
+    details = [
+        f"Language: {language}",
+        f"From: {row['country']}",
+        f"Climate: {row['climate_label']}",
+        f"Daily Cost: ${row['avg_cost_usd_day']}",
+        f"Rating: {row['avg_rating']}",
+        f"Duration: {duration}"
+    ]
+    for detail in details:
         pdf.cell(0, 8, detail, ln=True)
     pdf.ln(12)
-    
+
     safe_text = str(text).encode('latin-1', 'replace').decode('latin-1')
     pdf.set_font("Arial", "", 11)
     pdf.multi_cell(0, 6, safe_text)
-    
+
     pdf.ln(10)
     pdf.set_font("Arial", "B", 14)
     pdf.cell(0, 12, f"Your Rating: {rating}/5 Stars", ln=True, align='C')
-    
-    buffer = BytesIO()
-    pdf_output = pdf.output()
-    if isinstance(pdf_output, str):
-         buffer.write(pdf_output.encode('latin-1'))
-    else:
-         buffer.write(bytes(pdf_output))
-    buffer.seek(0)
-    return buffer 
 
+    # ✅ FIXED: write to temp file then read back as clean bytes
+    import tempfile, os
+    with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as tmp:
+        tmp_path = tmp.name
+    pdf.output(tmp_path)
+    with open(tmp_path, "rb") as f:
+        pdf_bytes = f.read()
+    os.remove(tmp_path)
+
+    buffer = BytesIO(pdf_bytes)
+    buffer.seek(0)
+    return buffer
 def generate_cinematic_gif(spot, language, duration):
     import numpy as np
 
