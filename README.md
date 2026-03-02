@@ -34,6 +34,8 @@ TravelAI Premium was built to solve this — by focusing on meaning, personaliza
 We often noticed that
 Most of the apps answer:
 > “Where can I go?”
+
+But..
 Very few answer:
 > “Why is this meaningful for me?”
 
