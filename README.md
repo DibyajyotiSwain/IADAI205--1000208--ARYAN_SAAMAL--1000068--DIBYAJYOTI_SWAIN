@@ -220,7 +220,7 @@ This replaced static images with a narrative visual journey.
 Innovation under constraint.
 <img width="1137" height="780" alt="image" src="https://github.com/user-attachments/assets/5139c204-250e-40ab-b011-ca6379a65a43" />
 
-# WEEk 8 Main Integration--🤖 Hodophiler — The Core Intelligence Engine
+# Week 8 Main Integration--🤖 Hodophiler — The Core Intelligence Engine
 
 The most dominant component of TravelAI Premium is the chatbot, **Hodophiler**.
 
@@ -250,7 +250,7 @@ It does not simply repeat stored data — it expands, explains, and contextualiz
 If the recommendation engine selects the destination and the itinerary generator builds the plan, Hodophiler connects everything together.
 
 It:
-
+* Also Answers the questions like with whom you can travel, preffered Seasons, etc 
 * Resolves user doubts instantly
 * Enhances personalization
 * Provides guidance beyond predefined logic
